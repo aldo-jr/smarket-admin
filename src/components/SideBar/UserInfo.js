@@ -20,7 +20,7 @@ class UserInfo extends Component {
             <div className="username">
               {user.name}
             </div>
-            <div className="title">Admin</div>
+            <div className="title">Estabelecimento</div>
           </div>
           <span
             onClick={() => this.setState({ isShowingUserMenu: !this.state.isShowingUserMenu })}
@@ -30,9 +30,8 @@ class UserInfo extends Component {
         </div>
         <Collapse in={isShowingUserMenu}>
           <ul className="nav user-nav">
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#">Edit Profile</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="#">Meu Perfil</a></li>
+            <li><a href="#">Editar dados</a></li>
           </ul>
         </Collapse>
       </div>

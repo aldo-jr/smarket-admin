@@ -1,6 +1,5 @@
 import React from 'react';
-import generateData from '../generateData';
-import StripedTable from './StripedTable';
+
 import PlainBackgroundTable from './PlainBackgroundTable';
 import { getProductsList } from '../../../calls/ProductsCalls';
 
@@ -11,7 +10,7 @@ class RegularTables extends React.Component {
   }
 
   componentWillMount() {
-    getProductsList(1).then(res => {console.log("RESPONSEEEEEE", res); this.setState({ data: res })})
+    getProductsList(1).then(res => this.setState({ data: res }))
   }
 
   render() {

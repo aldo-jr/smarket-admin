@@ -6,7 +6,6 @@ import { setMobileNavVisibility } from '../../reducers/Layout';
 import { withRouter } from 'react-router-dom';
 
 import Header from './Header';
-import Footer from './Footer';
 import SideBar from '../../components/SideBar';
 import ThemeOptions from '../../components/ThemeOptions';
 import MobileMenu from '../../components/MobileMenu';
@@ -43,14 +42,8 @@ const Main = ({
         <div className="main-panel">
           <Header />
           <Route exact path="/" component={Dashboard} />
-          <Route path="/components" component={Components} />
-          <Route path="/profile" component={UserProfile} />
           <Route path="/forms" component={Forms} />
           <Route path="/tables" component={Tables} />
-          <Route path="/maps" component={MapsPage} />
-          <Route path="/charts" component={Charts} />
-          <Route path="/calendar" component={Calendar} />
-          <Footer />
         </div>
       </div>
     </div>

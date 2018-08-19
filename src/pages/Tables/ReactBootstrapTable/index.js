@@ -2,29 +2,32 @@ import React, { Component } from 'react';
 import { BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import generateData from '../generateData';
+import { getProductsList } from '../../../calls/ProductsCalls';
 
-const data = generateData(1000);
+
 
 class ReactBootstrapTable extends Component {
 
   state = {
-    data: generateData(500, false)
+    data: []
   };
 
-  removeItem = itemId => {
-    this.setState({
-      data: data.filter(item => item.id !== itemId)
-    });
+  componentWillMount() {
+    getProductsList(1)
+    .then(res => {
+      console.log('response', res)
+      this.setState({data: res})
+    })
   }
 
   render() {
     const { data } = this.state;
     const options = {
       sizePerPage: 20,
-      prePage: 'Previous',
-      nextPage: 'Next',
-      firstPage: 'First',
-      lastPage: 'Last',
+      prePage: 'Anterior',
+      nextPage: 'Próximo',
+      firstPage: 'Primeiro',
+      lastPage: 'Último',
       hideSizePerPage: true,
     };
 
@@ -35,7 +38,6 @@ class ReactBootstrapTable extends Component {
             <div className="card">
               <div className="header">
                 <h4>Lista de produtos</h4>
-                <p>React Bootstrap Table is a multi-features, powerful data table for React. Check it at here: <a href="http://allenfang.github.io/react-bootstrap-table/index.html" target="_blank">http://allenfang.github.io/react-bootstrap-table</a></p>
               </div>
               <div className="content">
                 <BootstrapTable
@@ -49,38 +51,37 @@ class ReactBootstrapTable extends Component {
                     isKey
                     width="50px"
                     dataSort>
-                    ID
+                    Cód
                   </TableHeaderColumn>
                   <TableHeaderColumn
                     dataField='name'
                     width="15%"
                     filter={ { type: 'TextFilter'} }
                     dataSort>
-                    Name
+                    Nome
                   </TableHeaderColumn>
                   <TableHeaderColumn
-                    dataField='country'
+                    dataField='price'
                     width="15%"
                     dataSort>
-                    Country
+                    Preço
                   </TableHeaderColumn>
                   <TableHeaderColumn
-                    dataField='salary'
+                    dataField='sale'
                     width="15%"
                     dataSort>
-                    Salary
+                    Desconto
                   </TableHeaderColumn>
                   <TableHeaderColumn
-                    dataField='job'
+                    dataField='stock'
                     width="15%">
-                    Job
+                    Estoque
                   </TableHeaderColumn>
                   <TableHeaderColumn
-                    dataField='description'
+                    dataField='actions'
                     width="30%">
-                    Description
+                    Ações
                   </TableHeaderColumn>
-                  <TableHeaderColumn width="20%"></TableHeaderColumn>
                 </BootstrapTable>
               </div>
             </div>

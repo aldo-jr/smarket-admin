@@ -14,7 +14,7 @@ class Nav extends Component {
         <li className={location.pathname === '/' ? 'active' : null}>
           <Link to="/">
             <i className="pe-7s-graph"></i>
-            <p>Dashboard</p>
+            <p>Pedidos</p>
           </Link>
         </li>
         <li className={this.isPathActive('/tables') || this.state.tableMenuOpen ? 'active' : null}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 const PlainBackgroundTable = ({ data }) => (
@@ -26,7 +27,7 @@ const PlainBackgroundTable = ({ data }) => (
               <td>{item.StockQuantity}</td>
               <td>
                 <div className="content buttons-with-margin">
-                  <button className="btn btn-info btn-fill btn-wd">Editar</button>
+                  <Link className="btn btn-info btn-fill btn-wd" to="/tables/regular-forms">Lista / Editar</Link>
                   <button className="btn btn-danger btn-fill btn-wd">Excluir</button>
                 </div></td>
             </tr>

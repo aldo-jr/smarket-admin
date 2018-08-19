@@ -1,70 +1,57 @@
 import React from 'react';
 import ChartistGraph from 'react-chartist';
+import Alert from 'sweetalert-react';
+
+class EmailStatistic extends React.Component {
+  state = {};
 
 
-// Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+  render() {
+    return (
+      <div>
+        {this.state.finalizado || (
+          <div className="card" style={{ padding: '0 15px 15px', background: this.state.finalizado ? '#d4edda' : '#fff3cd', border: this.state.finalizado ? '1px solid #c3e6cb' : '1px solid #ffeeba', color: this.state.finalizado ? '' : '#155724' }} >
+            <div class="alert alert-success" style={{ padding: '0 15px' }} role="alert">
+              <h4 class="alert-heading">Notificação de pedido!</h4>
 
-// Chartist.Pie('#chartPreferences', {
-// labels: ['62%','32%','6%'],
-// series: [62, 32, 6]
-// });
-const EmailStatistic = () => {
 
-  let dataPreferences = {
-    labels: ['62%', '32%', '6%'],
-    series: [62, 32, 6]
-  };
+              <button className="btn btn-default btn-fill" style={{ marginRight: '10px' }} onClick={() => this.setState({ message1: true })}>Lista de produtos!</button>
+              <button className="btn btn-success btn-fill" style={{ marginLeft: '10px' }} onClick={() => this.setState({ message5: true })}>Lista separada!</button>
 
-  let optionsPreferences = {
-    donut: false,
-    donutWidth: 40,
-    startAngle: 0,
-    total: 100,
-    showLabel: true,
-    axisX: {
-      showGrid: false,
-      offset: 0
-    },
-    axisY: {
-      offset: 0
-    }
-  };
 
-  let chartType = 'Pie';
+              <Alert
+                title="Lista"
+                show={this.state.message1}
+                text={`
+          1 x Sabão em pó, Omo 1 kg
+          2 x Sabonete LUX
+          5 x Maçã
+          `}
+                onConfirm={() => this.setState({ message1: false })} />
 
-  return (
+              <Alert
+                title="Finalizar separação da lista?"
+                show={this.state.message5}
+                text="Ao finalizar, encaminharemos alguém para retirar a compra."
+                showCancelButton
+                onConfirm={() => this.setState({ showDeleteSuccessAlert: true })}
+                onCancel={() => this.setState({ message5: false })} />
 
-    <div className="card">
-      <div className="header">
-        <h4 className="title">Email Statistics</h4>
-        <p className="category">Last Campaign Performance</p>
+              <Alert
+                title="Finalizado"
+                show={this.state.showDeleteSuccessAlert}
+                text="Agora é só aguardar."
+                type="success"
+                onConfirm={() => {
+                  this.setState({ showDeleteSuccessAlert: false })
+                  this.setState({ finalizado: true })
+                }} />
+            </div>
+          </div>
+        )}
       </div>
-      <div className="content">
-
-        <ChartistGraph data={dataPreferences} options={optionsPreferences} type={chartType} className={'ct-chart ct-perfect-fourth'} />
-
-
-      </div>
-      <div className="footer">
-        <div className="legend">
-          <div className="item">
-            <i className="fa fa-circle text-info"></i> Open
-          </div>
-          <div className="item">
-            <i className="fa fa-circle text-danger"></i> Bounce
-          </div>
-          <div className="item">
-            <i className="fa fa-circle text-warning"></i> Unsubscribe
-          </div>
-        </div>
-        <hr />
-        <div className="stats">
-          <i className="fa fa-clock-o"></i> Campaign sent 2 days ago
-          </div>
-      </div>
-    </div>
-
-  );
+    );
+  }
 };
 
 export default EmailStatistic;

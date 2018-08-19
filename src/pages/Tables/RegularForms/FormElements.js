@@ -3,7 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import renderField from 'components/FormInputs/renderField';
 import TypeAheadField from '../../../components/FormInputs/AutosuggestInput';
 
-const items = ["apple", "pear", "orange", "grape", "banana"];
+const items = ["Amaciante", "Sabão em pó", "Maçã", "Maionese", "Granola]", "Biscoito", "Creme dental", "Torrada", "Batata", "Banana", "Melão", "Melancia", "Gelatina", "OMO 1 KG"];
+const categorias = ["Limpeza", "Bebida", "Carnes", "Bebês", "Alimentos", "Perfumaria", "Feira", "Roupas"]
 
 const FormElements = ({
   submitting,
@@ -20,7 +21,7 @@ const FormElements = ({
           <div className="form-group">
             <label className="control-label col-md-3">Categoria</label>
             <div className="col-md-9">
-              <TypeAheadField name="fruit" items={items} />
+              <TypeAheadField name="fruit" items={categorias} />
             </div>
           </div>
 
@@ -28,10 +29,7 @@ const FormElements = ({
           <div className="form-group">
             <label className="control-label col-md-3">Nome</label>
             <div className="col-md-9">
-              <Field
-                name="name"
-                type="text"
-                component={renderField} />
+              <TypeAheadField name="name" items={items} />
             </div>
           </div>
 

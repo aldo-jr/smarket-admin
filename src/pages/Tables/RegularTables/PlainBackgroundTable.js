@@ -19,7 +19,7 @@ const PlainBackgroundTable = ({ data }) => (
           </tr>
         </thead>
         <tbody>
-          {data.map(item => (
+          {data.map(item => item.IdMarket === 1 && (
             <tr key={item.Id}>
               <td>{item.Id}</td>
               <td>{item.Name}</td>
